@@ -49,7 +49,6 @@ function renderAllProducts() {
             <div class="col">
                       <div class="product-item all-products" data-product-index="${index}">
                         <span class="badge bg-success position-absolute m-3">${product.discount}</span>
-                        <a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
                         <figure>
                           <a href="product.html?id=${product.id}" title="${product.name}">
                             <img src="${product.image}"  class="tab-image">
@@ -140,7 +139,6 @@ function renderFruitsAndVeges() {
 		<div class="col">
 							<div class="product-item fruits-veges" data-product-index="${index}">
 								<span class="badge bg-success position-absolute m-3">${product.discount}</span>
-								<a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
 								<figure>
 									<a href="product.html?id=${product.id}" title="${product.name}">
 										<img src="${product.image}"  class="tab-image">
@@ -231,7 +229,6 @@ function renderJuices() {
 		<div class="col">
 							<div class="product-item juices" data-product-index="${index}">
 								<span class="badge bg-success position-absolute m-3">${product.discount}</span>
-								<a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
 								<figure>
 									<a href="product.html?id=${product.id}" title="${product.name}">
 										<img src="${product.image}"  class="tab-image">
@@ -334,7 +331,6 @@ function renderBestSellProducts() {
 		productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
-                  <a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
                   <figure>
                     <a href="product.html?id=${product.id}" title="${product.name}">
                       <img src="${product.image}" alt="${product.name}"  class="tab-image">
@@ -437,7 +433,6 @@ function renderMostPopularProducts() {
 		productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
-                  <a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
                   <figure>
                     <a href="product.html?id=${product.id}" title="${product.name}">
                       <img src="${product.image}" alt="${product.name}"  class="tab-image">
@@ -540,7 +535,6 @@ function renderJustArrivedProducts() {
 		productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
-                  <a class="add-to-favorites btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
                   <figure>
                     <a href="product.html?id=${product.id}" title="${product.name}">
                       <img src="${product.image}" alt="${product.name}"  class="tab-image">
@@ -625,9 +619,7 @@ $(document).ready(function () {
             <!-- Значок скидки и кнопка избранного -->
             <div class="product-page-badge">
               <span class="badge bg-success">${product.discount}</span>
-              <a id="add-to-favorites-btn" class="btn-wishlist">
-                <svg width="24" height="24"><use xlink:href="#heart"></use></svg>
-              </a>
+         
             </div>
             <img id="product-image" src="${product.image}" alt="${product.name}" class="product-page-img" />
           </div>
