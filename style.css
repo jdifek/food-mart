@@ -710,6 +710,20 @@ h6 {
 	min-width: 130px;
 }
 
+.cart-items .delete-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 2px 4px 2px 4px;
+}
+
+@media screen and (max-width: 419px) {
+	.cart-items h6,
+	.cart-items .price {
+		font-size: 14px;
+	}
+}
+
 .user-form {
 	padding: 20px;
 	border-radius: 10px;
@@ -842,6 +856,12 @@ h6 {
 		border: 1px solid #d1d1d1 !important;
 		padding: 14px;
 		border-radius: 8px;
+	}
+
+	@media screen and (max-width: 576px) {
+		.offcanvas {
+			width: 100% !important;
+		}
 	}
 	/* dropdown-menu */
 	.dropdown-menu {
