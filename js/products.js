@@ -1,12 +1,12 @@
 import PRODUCTS from './products.data.js'
 
 const {
-	ALL_PRODUCTS,
-	FRUITS_AND_VEGES,
-	JUICES,
-	BEST_SELL_PRODUCTS,
-	MOST_POPULAR_PRODUCTS,
-	JUST_ARRIVED_PRODUCTS,
+  ALL_PRODUCTS,
+  FRUITS_AND_VEGES,
+  JUICES,
+  BEST_SELL_PRODUCTS,
+  MOST_POPULAR_PRODUCTS,
+  JUST_ARRIVED_PRODUCTS,
 } = PRODUCTS
 
 const productGrid = document.getElementById('productGrid')
@@ -18,34 +18,34 @@ const justArrivedProducts = document.getElementById('justArrivedProducts')
 
 // render all products
 function renderAllProducts() {
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.all-products').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.all-products').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
 
-	productGrid.innerHTML = ''
+  productGrid.innerHTML = ''
 
-	ALL_PRODUCTS.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('col')
+  ALL_PRODUCTS.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('col')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
             <div class="col">
                       <div class="product-item all-products" data-product-index="${index}">
                         <span class="badge bg-success position-absolute m-3">${product.discount}</span>
@@ -77,65 +77,65 @@ function renderAllProducts() {
                     </div>
         `
 
-		productGrid.appendChild(productElement)
-	})
+    productGrid.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	productGrid.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  productGrid.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = productItem.dataset.productIndex
-		const product = ALL_PRODUCTS[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = productItem.dataset.productIndex
+    const product = ALL_PRODUCTS[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderAllProducts()
+  renderAllProducts()
 })
 
 // render fruits & veges
 function renderFruitsAndVeges() {
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.fruits-veges').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.fruits-veges').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
 
-	fruitsAndVegesGrid.innerHTML = ''
+  fruitsAndVegesGrid.innerHTML = ''
 
-	FRUITS_AND_VEGES.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('col')
+  FRUITS_AND_VEGES.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('col')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
 		<div class="col">
 							<div class="product-item fruits-veges" data-product-index="${index}">
 								<span class="badge bg-success position-absolute m-3">${product.discount}</span>
@@ -167,65 +167,65 @@ function renderFruitsAndVeges() {
 						</div>
 `
 
-		fruitsAndVegesGrid.appendChild(productElement)
-	})
+    fruitsAndVegesGrid.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	fruitsAndVegesGrid.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  fruitsAndVegesGrid.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = productItem.dataset.productIndex
-		const product = FRUITS_AND_VEGES[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = productItem.dataset.productIndex
+    const product = FRUITS_AND_VEGES[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderFruitsAndVeges()
+  renderFruitsAndVeges()
 })
 
 // render juices
 function renderJuices() {
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.juices').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.juices').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
 
-	juicesGrid.innerHTML = ''
+  juicesGrid.innerHTML = ''
 
-	JUICES.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('col')
+  JUICES.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('col')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
 		<div class="col">
 							<div class="product-item juices" data-product-index="${index}">
 								<span class="badge bg-success position-absolute m-3">${product.discount}</span>
@@ -257,78 +257,78 @@ function renderJuices() {
 						</div>
 `
 
-		juicesGrid.appendChild(productElement)
-	})
+    juicesGrid.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	juicesGrid.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  juicesGrid.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = productItem.dataset.productIndex
-		const product = JUICES[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = productItem.dataset.productIndex
+    const product = JUICES[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderJuices()
+  renderJuices()
 })
 
 // render best selling products
 function renderBestSellProducts() {
-	bestSellProducts.innerHTML = ''
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.best-selling').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  bestSellProducts.innerHTML = ''
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.best-selling').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
 
-	// swiper slide
-	const bestSellingSwiper = new Swiper('.best-selling-carousel', {
-		slidesPerView: 4,
-		spaceBetween: 20,
-		navigation: {
-			nextEl: '.best-selling-next',
-			prevEl: '.best-selling-prev',
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-	})
+  // swiper slide
+  const bestSellingSwiper = new Swiper('.best-selling-carousel', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.best-selling-next',
+      prevEl: '.best-selling-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  })
 
-	BEST_SELL_PRODUCTS.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('product-item', 'best-selling', 'swiper-slide')
+  BEST_SELL_PRODUCTS.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('product-item', 'best-selling', 'swiper-slide')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
                   <figure>
@@ -358,79 +358,79 @@ function renderBestSellProducts() {
                 </div>
         `
 
-		bestSellProducts.appendChild(productElement)
-	})
+    bestSellProducts.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	bestSellProducts.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  bestSellProducts.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = [...bestSellProducts.children].indexOf(productItem)
-		const product = BEST_SELL_PRODUCTS[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = [...bestSellProducts.children].indexOf(productItem)
+    const product = BEST_SELL_PRODUCTS[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 
-	bestSellingSwiper.update()
+  bestSellingSwiper.update()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderBestSellProducts()
+  renderBestSellProducts()
 })
 
 // render most popular
 function renderMostPopularProducts() {
-	mostPopularProducts.innerHTML = ''
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.most-popular').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  mostPopularProducts.innerHTML = ''
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.most-popular').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
-	// swiper slide
-	const mostPopularSwiper = new Swiper('.most-popular-carousel', {
-		slidesPerView: 4,
-		spaceBetween: 20,
-		navigation: {
-			nextEl: '.most-popular-next',
-			prevEl: '.most-popular-prev',
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-	})
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
+  // swiper slide
+  const mostPopularSwiper = new Swiper('.most-popular-carousel', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.most-popular-next',
+      prevEl: '.most-popular-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  })
 
-	MOST_POPULAR_PRODUCTS.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('product-item', 'most-popular', 'swiper-slide')
+  MOST_POPULAR_PRODUCTS.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('product-item', 'most-popular', 'swiper-slide')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
                   <figure>
@@ -460,79 +460,79 @@ function renderMostPopularProducts() {
                 </div>
         `
 
-		mostPopularProducts.appendChild(productElement)
-	})
+    mostPopularProducts.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	mostPopularProducts.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  mostPopularProducts.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = [...mostPopularProducts.children].indexOf(productItem)
-		const product = MOST_POPULAR_PRODUCTS[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = [...mostPopularProducts.children].indexOf(productItem)
+    const product = MOST_POPULAR_PRODUCTS[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 
-	mostPopularSwiper.update()
+  mostPopularSwiper.update()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderMostPopularProducts()
+  renderMostPopularProducts()
 })
 
 // render just arrived
 function renderJustArrivedProducts() {
-	justArrivedProducts.innerHTML = ''
-	// attach quantity handlers
-	function attachQuantityHandlers() {
-		document.querySelectorAll('.just-arrived').forEach(product => {
-			const quantityInput = product.querySelector('.input-number')
-			const minusButton = product.querySelector('.quantity-left-minus')
-			const plusButton = product.querySelector('.quantity-right-plus')
+  justArrivedProducts.innerHTML = ''
+  // attach quantity handlers
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.just-arrived').forEach(product => {
+      const quantityInput = product.querySelector('.input-number')
+      const minusButton = product.querySelector('.quantity-left-minus')
+      const plusButton = product.querySelector('.quantity-right-plus')
 
-			plusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 0
-				quantityInput.value = quantity + 1
-			})
+      plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 0
+        quantityInput.value = quantity + 1
+      })
 
-			minusButton.addEventListener('click', () => {
-				let quantity = parseInt(quantityInput.value, 10) || 1
-				if (quantity > 1) {
-					quantityInput.value = quantity - 1
-				}
-			})
-		})
-	}
-	// swiper slide
-	const justArrivedSwiper = new Swiper('.just-arrived-carousel', {
-		slidesPerView: 4,
-		spaceBetween: 20,
-		navigation: {
-			nextEl: '.just-arrived-next',
-			prevEl: '.just-arrived-prev',
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-	})
+      minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10) || 1
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1
+        }
+      })
+    })
+  }
+  // swiper slide
+  const justArrivedSwiper = new Swiper('.just-arrived-carousel', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.just-arrived-next',
+      prevEl: '.just-arrived-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  })
 
-	JUST_ARRIVED_PRODUCTS.forEach((product, index) => {
-		const productElement = document.createElement('div')
-		productElement.classList.add('product-item', 'just-arrived', 'swiper-slide')
+  JUST_ARRIVED_PRODUCTS.forEach((product, index) => {
+    const productElement = document.createElement('div')
+    productElement.classList.add('product-item', 'just-arrived', 'swiper-slide')
 
-		productElement.innerHTML = `
+    productElement.innerHTML = `
             <div data-product-index="${index}">
                   <span class="badge bg-success position-absolute m-3">${product.discount}</span>
                   <figure>
@@ -561,58 +561,58 @@ function renderJustArrivedProducts() {
                   </div>
                 </div>
         `
-		justArrivedProducts.appendChild(productElement)
-	})
+    justArrivedProducts.appendChild(productElement)
+  })
 
-	attachQuantityHandlers()
-	justArrivedProducts.addEventListener('click', function (event) {
-		const target = event.target.closest('.add-to-cart, .add-to-favorites')
-		if (!target) return
+  attachQuantityHandlers()
+  justArrivedProducts.addEventListener('click', function (event) {
+    const target = event.target.closest('.add-to-cart, .add-to-favorites')
+    if (!target) return
 
-		const productItem = event.target.closest('.product-item')
-		const productIndex = [...justArrivedProducts.children].indexOf(productItem)
-		const product = JUST_ARRIVED_PRODUCTS[productIndex]
+    const productItem = event.target.closest('.product-item')
+    const productIndex = [...justArrivedProducts.children].indexOf(productItem)
+    const product = JUST_ARRIVED_PRODUCTS[productIndex]
 
-		const quantityInput = productItem.querySelector('.input-number')
-		const quantity = parseInt(quantityInput.value, 10) || 1
+    const quantityInput = productItem.querySelector('.input-number')
+    const quantity = parseInt(quantityInput.value, 10) || 1
 
-		if (target.classList.contains('add-to-cart')) {
-			addToCart({ ...product, quantity })
-			alert('Product added to cart!')
-		} else if (target.classList.contains('add-to-favorites')) {
-			addToFavorites({ ...product, quantity })
-			alert('Product added to favorites!')
-		}
-	})
+    if (target.classList.contains('add-to-cart')) {
+      addToCart({ ...product, quantity })
+      alert('Product added to cart!')
+    } else if (target.classList.contains('add-to-favorites')) {
+      addToFavorites({ ...product, quantity })
+      alert('Product added to favorites!')
+    }
+  })
 
-	justArrivedSwiper.update()
+  justArrivedSwiper.update()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderJustArrivedProducts()
+  renderJustArrivedProducts()
 })
 
 // product-item page
 $(document).ready(function () {
-	function getProductIdFromUrl() {
-		const urlParams = new URLSearchParams(window.location.search)
-		return parseInt(urlParams.get('id'))
-	}
+  function getProductIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search)
+    return parseInt(urlParams.get('id'))
+  }
 
-	const productId = getProductIdFromUrl()
+  const productId = getProductIdFromUrl()
 
-	const product =
-		ALL_PRODUCTS.find(p => p.id === productId) ||
-		FRUITS_AND_VEGES.find(p => p.id === productId) ||
-		JUICES.find(p => p.id === productId) ||
-		BEST_SELL_PRODUCTS.find(p => p.id === productId) ||
-		MOST_POPULAR_PRODUCTS.find(p => p.id === productId) ||
-		JUST_ARRIVED_PRODUCTS.find(p => p.id === productId)
+  const product =
+    ALL_PRODUCTS.find(p => p.id === productId) ||
+    FRUITS_AND_VEGES.find(p => p.id === productId) ||
+    JUICES.find(p => p.id === productId) ||
+    BEST_SELL_PRODUCTS.find(p => p.id === productId) ||
+    MOST_POPULAR_PRODUCTS.find(p => p.id === productId) ||
+    JUST_ARRIVED_PRODUCTS.find(p => p.id === productId)
 
-	const $productDetails = $('#productDetails')
+  const $productDetails = $('#productDetails')
 
-	if (product) {
-		$productDetails.html(`
+  if (product) {
+    $productDetails.html(`
       <div class="product-page-container">
         <div class="product-page-grid">
           <div class="product-page-card">
@@ -633,63 +633,63 @@ $(document).ready(function () {
               </svg>
               ${product.rating}
             </p>
+            <button id="add-to-cart-btn" class="btn btn-primary btn-lg w-100">Add to Cart 🛒</button>
+
             <p class="product-page-unit">Unit: ${product.unit}</p>
             <p class="product-page-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, eros eu sagittis faucibus, elit ex molestie urna, sed malesuada enim purus in magna. Nulla facilisi. Suspendisse potenti. Etiam ut diam vitae risus ultrices euismod. Fusce sit amet est in mauris faucibus sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, eros eu sagittis faucibus, elit ex molestie urna, sed malesuada enim purus in magna. Nulla facilisi. Suspendisse potenti. Etiam ut diam vitae risus ultrices euismod. Fusce sit amet est in mauris faucibus sollicitudin.
-            </p>
-            <button id="add-to-cart-btn" class="btn btn-primary btn-lg w-100">Add to Cart 🛒</button>
+${product.overview}            </p>
             <a class="btn btn-lg btn-outline-light w-100 product-page-link" href="index.html">Back to Products</a>
           </div>
         </div>
       </div>
     `)
 
-		$('#add-to-cart-btn').on('click', function () {
-			addToCart(product)
-			alert('Product added to cart!')
-		})
+    $('#add-to-cart-btn').on('click', function () {
+      addToCart(product)
+      alert('Product added to cart!')
+    })
 
-		$('#add-to-favorites-btn').on('click', function () {
-			addToFavorites(product)
-			alert('Product added to favorites!')
-		})
-	} else {
-		$productDetails.html(`
+    $('#add-to-favorites-btn').on('click', function () {
+      addToFavorites(product)
+      alert('Product added to favorites!')
+    })
+  } else {
+    $productDetails.html(`
     <div class="alert alert-danger mt-5 text-center">
       <h2>Product not found</h2>
       <p>We couldn't find the product you were looking for. Please go back to the products page.</p>
       <a class="btn btn-secondary btn-lg mt-3" href="index.html">Back to Products</a>
     </div>
   `)
-	}
+  }
 })
 
 // add to Cart
 function addToCart(product) {
-	let cart = JSON.parse(localStorage.getItem('cart')) || []
+  let cart = JSON.parse(localStorage.getItem('cart')) || []
 
-	const existingProduct = cart.find(p => p.id === product.id)
+  const existingProduct = cart.find(p => p.id === product.id)
 
-	if (existingProduct) {
-		existingProduct.quantity += product.quantity
-	} else {
-		cart.push(product)
-	}
-	localStorage.setItem('cart', JSON.stringify(cart))
+  if (existingProduct) {
+    existingProduct.quantity += product.quantity
+  } else {
+    cart.push(product)
+  }
+  localStorage.setItem('cart', JSON.stringify(cart))
 
-	window.loadCart()
+  window.loadCart()
 }
 
 // add to Favorites
 function addToFavorites(product) {
-	let favorites = JSON.parse(localStorage.getItem('favorites')) || []
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || []
 
-	const existingProduct = favorites.find(p => p.id === product.id)
+  const existingProduct = favorites.find(p => p.id === product.id)
 
-	if (existingProduct) {
-		existingProduct.quantity += product.quantity
-	} else {
-		favorites.push(product)
-	}
-	localStorage.setItem('favorites', JSON.stringify(favorites))
+  if (existingProduct) {
+    existingProduct.quantity += product.quantity
+  } else {
+    favorites.push(product)
+  }
+  localStorage.setItem('favorites', JSON.stringify(favorites))
 }
