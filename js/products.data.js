@@ -1,9 +1,9 @@
 const NEW_IMAGES = [
-  'images/photo_2025-01-28_10-45-03.jpg',
-  'images/photo_2025-01-28_10-45-05.jpg',
-  'images/photo_2025-01-28_10-45-07.jpg',
-  'images/photo_2025-01-28_10-45-08.jpg',
-  'images/photo_2025-01-28_10-45-06.jpg'
+  'images/photo_2025-01-28_10-45-03 (1).jpg',
+  'images/photo_2025-01-28_10-45-05 (1).jpg',
+  'images/photo_2025-01-28_10-45-07 (1).jpg',
+  'images/photo_2025-01-28_10-45-08 (1).jpg',
+  'images/photo_2025-01-28_10-45-06 (1).jpg'
 ];
 
 const ALL_PRODUCTS = [
